@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faUser,
+  // faUser,
   faTicketAlt,
-  faFileAlt
+  // faFileAlt
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faFileAlt
+} from "@fortawesome/free-regular-svg-icons";;
 import "./main.css";
 
 import { getUserName, getAuth } from "../../auth/auth";

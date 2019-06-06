@@ -18,6 +18,7 @@ import { reqGetUser } from "./actions/userActions";
 import { getAuth } from "./auth/auth";
 import Entrance from "./components/Main/Entrance";
 import MyPage from "./components/MyPage/MyPage";
+import RentSuccess from "./components/Rent/RentSuccess";
 
 library.add([faUser]);
 
@@ -47,6 +48,7 @@ class App extends Component {
           <Switch>
             <Route path="/main" component={Main} />
             <Route path="/mypage" component={MyPage} />
+            <Route path="/rentsuccess" component={RentSuccess} />
             <Route path="/" component={Entrance} />
           </Switch>
         </div>

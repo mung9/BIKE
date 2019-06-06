@@ -178,6 +178,7 @@ function SearchBar(props) {
         name="query"
         value={value}
         onChange={onChange}
+        placeholder='검색어를 입력해주세요'
       />
     </div>
   );

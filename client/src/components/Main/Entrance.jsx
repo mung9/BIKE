@@ -8,8 +8,8 @@ import { connect } from "react-redux";
 
 import { getAuth } from "../../auth/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUserAlt } from "@fortawesome/free-solid-svg-icons";
-
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser as faUserReg } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 
 class Entrance extends React.Component {
@@ -35,7 +35,7 @@ class Entrance extends React.Component {
               <button className="btn-container__btn">
                 <span className="btn-label">비회원</span>
                 <span className="btn-icon">
-                  <FontAwesomeIcon icon={faUserAlt} size="2x" />
+                  <FontAwesomeIcon icon={faUserReg}  mask={['far','circle']} size="2x" />
                 </span>
               </button>
             </Link>
