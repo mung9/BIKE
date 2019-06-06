@@ -20,7 +20,7 @@ export function rentFail(error) {
 export function rentSuccess(user, rentalSpot) {
   return {
     type: ACTION.RENT_SUCCESS,
-    payload: { user, rentalSpot }
+    payload: { user, rentalSpot,  }
   };
 }
 

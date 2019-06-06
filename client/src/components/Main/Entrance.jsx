@@ -10,10 +10,12 @@ import { getAuth } from "../../auth/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 
+import axios from "axios";
+
 class Entrance extends React.Component {
-  componentWillMount(){
-    if(getAuth()) {
-      this.props.history.replace('/main');
+  componentWillMount() {
+    if (getAuth()) {
+      this.props.history.replace("/main");
     }
   }
   render() {
@@ -21,15 +23,15 @@ class Entrance extends React.Component {
       <div className="main text-center d-flex justify-content-center">
         <div className="entrance">
           <div className="entrance__btn-container">
-            <Link to="/login">
-              <button className="btn-container__btn">
+            <button className="btn-container__btn">
+              <Link className="link-login" to="/login">
                 <span className="btn-label">로그인</span>
                 <span className="btn-icon">
                   <FontAwesomeIcon icon={faUser} size="2x" />
                 </span>
-              </button>
-            </Link>
-            <Link to="/main">
+              </Link>
+            </button>
+            <Link className="link-main" to="/main">
               <button className="btn-container__btn">
                 <span className="btn-label">비회원</span>
                 <span className="btn-icon">

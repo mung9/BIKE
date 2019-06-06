@@ -7,6 +7,11 @@
   flex-wrap: wrap;
 }
 
+a, a:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
 /* body {margin:0;padding:0;background-color:#fff;}
 hr {display:none;clear:both;}
 img,fieldset {border:0 none;}

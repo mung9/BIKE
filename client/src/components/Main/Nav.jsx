@@ -7,7 +7,7 @@ export default function Nav() {
       <Link to="/favorites">
         <button className="bottom-nav__btn">즐겨찾는 대여소</button>
       </Link>
-      <Link to="/my">
+      <Link to="/mypage">
         <button className="bottom-nav__btn-center">My</button>
       </Link>
       <Link to="/buy-ticket">

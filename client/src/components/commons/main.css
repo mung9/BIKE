@@ -1,4 +1,5 @@
 .bike-header {
+  color: white;
   background-color: mediumaquamarine;
 }
 
@@ -15,22 +16,20 @@
 .bike-header .btn-logout {
   width:fit-content;
   padding-top: .2em;
-  font-size: 1.2em;
-  color: white;
-  font-weight: bold;
 }
 
 .bike-header .btn-logout * {
+  font-size: 1.2em;
+  font-weight: bold;
   margin-right: 0.3em;
 }
 
-.bike-header .say-user {
-  color: white;
+.bike-header .user-badge {
   font-size: 1.4em;
   margin-right: .4em;
 }
 
-.bike-header .say-user * {
+.bike-header .user-badge * {
   margin-right: 0.3em;
 }
 

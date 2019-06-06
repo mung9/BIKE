@@ -1,6 +1,6 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import { getAuth } from "../../auth/auth";
+import { Link } from "react-router-dom";
+import { getAuth, getUserName } from "../../auth/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt, faUserCircle } from "@fortawesome/free-solid-svg-icons";
@@ -20,11 +20,11 @@ export default function Header(props) {
     <header className="bike-header">
       <div className="navbar navbar-dark shadow-sm">
         <div className="container d-flex justify-content-between">
-        <Link className="logo navbar-brand d-flex align-items-center" to='/'>
+          <Link className="logo navbar-brand d-flex align-items-center" to="/">
             <h1>BIKE</h1>
           </Link>
           <div className="user-nav">
-            {auth ? sayUserName(auth.username) : null}
+            {auth ? <UserBadge/> : null}
             {auth ? (
               <a href="#" className="btn-logout" onClick={logout}>
                 <FontAwesomeIcon icon={faSignOutAlt} />
@@ -38,17 +38,11 @@ export default function Header(props) {
   );
 }
 
-function sayUserName(username) {
-  const name = extractName(username);
+function UserBadge() {
   return (
-    <div className="say-user">
+    <div className="user-badge">
       <FontAwesomeIcon icon={faUserCircle} />
-      <span>{`${name}님`}</span>
+      <span>{getUserName()}님</span>
     </div>
   );
-}
-
-function extractName(email) {
-  const atIndex = email.indexOf("@");
-  return email.slice(0, atIndex);
 }

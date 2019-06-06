@@ -9,17 +9,15 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { connect } from "react-redux";
 
-import Login from "./components/Login/Login";
 import Header from "./components/commons/Header";
-import Footer from "./components/commons/Footer";
 
 import Main from "./components/Main/Main";
-import Rent from "./components/Rent/Rent";
 
 import { reqGetRentalSpots } from "./actions/rentalSpotsActions";
 import { reqGetUser } from "./actions/userActions";
 import { getAuth } from "./auth/auth";
 import Entrance from "./components/Main/Entrance";
+import MyPage from "./components/MyPage/MyPage";
 
 library.add([faUser]);
 
@@ -44,6 +42,7 @@ class App extends Component {
         <div className="content">
           <Switch>
             <Route path="/main" component={Main} />
+            <Route path="/mypage" component={MyPage} />
             <Route path="/" component={Entrance} />
           </Switch>
         </div>
