@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faTicketAlt } from "@fortawesome/free-solid-svg-icons";
+import { getAuth } from "../../auth/auth";
 
 export default function Nav() {
   return (
@@ -14,8 +15,11 @@ export default function Nav() {
           <span>즐겨찾는 대여소</span>
         </button>
       </Link>
-      <button className="bottom-nav__btn-center">My</button>
-      <Link to="/mypage" />
+      <Link to="/mypage" >
+      <button className="bottom-nav__btn-center">
+        My
+      </button>
+      </Link>
       <Link to="/buy-ticket">
         <button className="bottom-nav__btn">
           <i>

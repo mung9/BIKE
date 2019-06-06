@@ -6,6 +6,7 @@ export default function rentalSpotsReducer(rentalSpots = [], action) {
     case ACTION.SET_RENTAL_SPOTS:
       return action.payload.rentalSpots;
 
+    case RENT_ACTION.RETURN_SUCCESS:
     case RENT_ACTION.RENT_SUCCESS:
       const updatedRentalSpot = action.payload.rentalSpot;
       return rentalSpots.map(rentalSpot => {

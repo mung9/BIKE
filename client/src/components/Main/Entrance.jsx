@@ -41,7 +41,6 @@ class Entrance extends React.Component {
             </button>
           </div>
         </div>
-        <Nav />
       </div>
     );
   }

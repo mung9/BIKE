@@ -23,7 +23,7 @@ export default function rentReducer(user = initialState, action) {
     case ACTION.RENT_FAIL:
       return { ...user, error: action.payload.error };
     case ACTION.RETURN_SUCCESS:
-      return { ...user };
+      return { ...user, ...action.payload.user };
     case ACTION.RETURN_FAIL:
       return { ...user, error: action.payload.error };
     case ACTION.CLEAR_ERROR:

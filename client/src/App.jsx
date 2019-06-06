@@ -27,12 +27,16 @@ class App extends Component {
 
     const auth = getAuth();
     if (auth) {
-      await this.props.onInitUser(auth._id);
+      await this.props.onInitUser(auth);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    
+    if(prevProps.user && this.props.user){
+      if(prevProps.user.bike && !this.props.user.bike){
+        alert('자전거가 반납되었습니다!');
+      }
+    }
   }
 
   render() {

@@ -18,7 +18,7 @@ function* handleRent(action) {
 
     const { user, rentalSpot } = data;
     yield put(rentActions.rentSuccess(user, rentalSpot));
-    alert(`${payload.index+1}번째 거치대의 자전거를 대여했습니다`);
+    alert(`${payload.index + 1}번째 거치대의 자전거를 대여했습니다`);
   } catch (error) {
     yield put(rentActions.rentFail("대여할 수 없는 상태입니다."));
     yield put(errorActions.setError(error));
@@ -28,13 +28,15 @@ function* handleRent(action) {
 function* handleReturn(action) {
   try {
     const { payload } = action;
-    const { data: bike } = yield call(
+    const { data } = yield call(
       rentService.returnBike,
       payload.rentalSpot,
       payload.index,
-      payload.bike
+      { bike: payload.bike }
     );
-    yield put(rentActions.returnSuccess());
+
+    const { user, rentalSpot } = data;
+    yield put(rentActions.returnSuccess(user, rentalSpot));
   } catch (error) {
     yield put(rentActions.returnFail("반납을 실패했습니다."));
     yield put(errorActions.setError(error));
@@ -43,10 +45,12 @@ function* handleReturn(action) {
 
 function* handleGetUser(action) {
   try {
-    const { data: user } = yield call(rentService.getUser, action.payload.id);
+    const { data: user } = yield call(rentService.getUser);
     yield put(rentActions.getUserSuccess(user));
   } catch (error) {
-    yield put(rentActions.getUserFail("유저 정보를 가져오는데에 실패했습니다.."));
+    yield put(
+      rentActions.getUserFail("유저 정보를 가져오는데에 실패했습니다..")
+    );
     yield put(errorActions.setError(error));
   }
 }

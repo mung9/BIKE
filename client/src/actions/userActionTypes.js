@@ -8,6 +8,6 @@ export const RENT_FAIL = "RENT_FAIL";
 
 export const CLEAR_ERROR = "CLEAR_ERROR";
 
-export const REQ_GET_USER = "REQ_GET_USER"
-export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
-export const GET_USER_FAIL = "GET_USER_FAIL"
+export const REQ_GET_USER = "REQ_GET_USER";
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+export const GET_USER_FAIL = "GET_USER_FAIL";

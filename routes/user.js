@@ -57,28 +57,65 @@ router.post("/rent/:id/:index", [auth], async (req, res) => {
     return res.status(400).send("RentalSpot with given id does not exist.");
 
   const bike = rentalSpot.bikes[req.params.index];
-  if (!bike) return res.status(400).send("There is no bike to be deleted");
+  if (!bike) return res.status(400).send("There is no bike to rent");
 
-  req.user.bike = bike.id;
-  const user = await User.findByIdAndUpdate(req.user._id, req.user).select(
-    "-password"
-  );
+  req.user.bike = bike;
+  const user = await User.findByIdAndUpdate(req.user._id, req.user, {
+    new: true
+  }).select("-password");
   if (!user) return res.status(400).send("Invalid User");
 
   rentalSpot.bikes[req.params.index] = null;
   const updatedRentalSpot = await RentalSpot.findByIdAndUpdate(
     rentalSpot._id,
-    rentalSpot
-  );
-
-  rentalSpot = rentalSpot.populate({
+    rentalSpot,
+    { new: true }
+  ).populate({
     path: "bikes",
     options: {
       retainNullValues: true
     }
   });
 
-  res.send({ rentalSpot, user });
+  res.send({ rentalSpot: updatedRentalSpot, user });
+});
+
+router.post("/return/:id/:index", [auth], async (req, res) => {
+  const { error } = validateId(req.params.id);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  let rentalSpot = await RentalSpot.findById(req.params.id);
+  if (!rentalSpot)
+    return res.status(400).send("RentalSpot with given id does not exist.");
+
+  const bike = rentalSpot.bikes[req.params.index];
+  if (bike) return res.status(400).send("The holder is occupied by other bike");
+
+  const bikeToReturn = await Bike.findById(req.body.bike);
+  if(!bikeToReturn) return res.status(400).send('The Bike with given id does not exist');
+
+  user = await User.findByIdAndUpdate(
+    req.user._id,
+    { bike: null },
+    {
+      new: true
+    }
+  ).select("-password");
+  if (!user) return res.status(400).send("Invalid User");
+
+  rentalSpot.bikes[req.params.index] = bikeToReturn._id;
+  const updatedRentalSpot = await RentalSpot.findByIdAndUpdate(
+    rentalSpot._id,
+    rentalSpot,
+    { new: true }
+  ).populate({
+    path: "bikes",
+    options: {
+      retainNullValues: true
+    }
+  });
+
+  res.send({ rentalSpot: updatedRentalSpot, user });
 });
 
 router.delete("/", [auth], (req, res) => {});

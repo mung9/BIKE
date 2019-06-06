@@ -5,7 +5,7 @@ import { reqGetRentalSpots } from "../../actions/rentalSpotsActions";
 import Rent from "../Rent/Rent";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faFrownOpen } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 import "./main.css";
 import { select } from "redux-saga/effects";
@@ -143,7 +143,7 @@ function SearchBar(props) {
     <div className="input-group mb-3">
       <div className="input-group-prepend">
         <button
-          className="btn btn-outline-secondary dropdown-toggle"
+          className="btn btn-outline-info dropdown-toggle"
           type="button"
           data-toggle="dropdown"
           aria-haspopup="true"

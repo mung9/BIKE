@@ -14,6 +14,8 @@ router.get("/", async (req, res) => {
     }
   }).sort('num');
 
+  console.log(rentalSpots);
+
   return res.send(rentalSpots);
 });
 

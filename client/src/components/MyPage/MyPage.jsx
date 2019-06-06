@@ -1,51 +1,133 @@
 import React from "react";
-import {connect} from 'react-redux';
-import './main.css';
+import { connect } from "react-redux";
 
-import {getUserName} from '../../auth/auth';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faTicketAlt,
+  faFileAlt
+} from "@fortawesome/free-solid-svg-icons";
+import "./main.css";
+
+import { getUserName, getAuth } from "../../auth/auth";
+import { reqReturn } from "../../actions/userActions";
 
 function MyPage(props) {
+  const auth = getAuth();
+  if (!auth) props.history.replace("/login");
+
+  const { onReturn, user } = props;
+  const onClickReturn = () => {
+    if (!auth || !user.bike) return;
+    const { rentalSpot, index } = getEmptyHolder(props.rentalSpots);
+
+    return onReturn(rentalSpot, index, user.bike);
+  };
+
   return (
     <div className="container">
-    <div className="row container-row">
-      <div className="col top left" id="username">
-        {`${getUserName()} 님`}
+      <div className="row container-row">
+        <div className="col top left" id="username">
+          {`${auth ? getUserName() : ""} 님`}
+        </div>
+        <div className="col top" id="rent_status">
+          <BikeRentalStatus user={user} onClickReturn={onClickReturn}/>
+        </div>
+        <div className="w-100" />
+        <div className="table row">
+          <div className="col left menu">
+            <div className="menu-icon">
+              <i>
+                <FontAwesomeIcon icon={faUser} size="3x" />
+              </i>
+            </div>
+            <div className="menu-label">
+              <span>회원정보 관리</span>
+            </div>
+          </div>
+          <div className="col list">
+            <div>> 개인정보 수정</div>
+            <div>> 비밀번호 변경</div>
+            <div>> 회원탈퇴</div>
+          </div>
+          <div className="w-100" />
+          <div className="col left menu">
+            <div className="menu-icon">
+              <i>
+                <FontAwesomeIcon icon={faTicketAlt} size="3x" />
+              </i>
+            </div>
+            <div className="menu-label">
+              <span>결제 관리</span>
+            </div>
+          </div>
+          <div className="col list">
+            <div>> 결제 내역</div>
+            <div>> 미납요금</div>
+            <div>> 추가요금 결제</div>
+          </div>
+          <div className="w-100" />
+          <div className="col left menu">
+            <div className="menu-icon">
+              <i>
+                <FontAwesomeIcon icon={faFileAlt} size="3x" />
+              </i>
+            </div>
+            <div className="menu-label">
+              <span>이용정보 관리</span>
+            </div>
+          </div>
+          <div className="col list">
+            <div>> 대여 반납 이력</div>
+            <div>> 이용권 내역</div>
+            <div>> 대여신청 상태</div>
+          </div>
+        </div>
       </div>
-      <div className="col top" id="rent_status">
-        <text id="status">ⓘ {props.user.bike ? '자전거 대여 중':'자전거 대여 전'}</text>
-        <text id="rent_time">{props.user.bike ? '(2019.06.07 15:32:50)' : ''}</text>
-        <button className="btn btn-primary" id="return">
-          반납
-        </button>
-      </div>
-      <div className="w-100" />
-      <div className="col left menu">회원정보 관리</div>
-      <div className="col list">
-        <div>> 개인정보 수정</div>
-        <div>> 비밀번호 변경</div>
-        <div>> 회원탈퇴</div>
-      </div>
-      <div className="w-100" />
-      <div className="col left menu">결제 관리</div>
-      <div className="col list">
-        <div>> 결제 내역</div>
-        <div>> 미납요금</div>
-        <div>> 추가요금 결제</div>
-      </div>
-      <div className="w-100" />
-      <div className="col left menu">이용정보 관리</div>
-      <div className="col list">
-        <div>> 대여 반납 이력</div>
-        <div>> 이용권 내역</div>
-        <div>> 대여신청 상태</div>
-      </div>
-    </div>
     </div>
   );
 }
 
+function BikeRentalStatus({ user, onClickReturn }) {
+  const bike = user ? user.bike : null;
+  return (
+    <React.Fragment>
+      <span id="status">ⓘ {bike ? "자전거 대여 중" : "자전거 대여 전"}</span>
+      <span id="rent_time">{bike ? "(2019.06.07 15:32:50)" : ""}</span>
+      {bike ? (
+        <button className="btn btn-primary" id="return" onClick={onClickReturn}>
+          반납
+        </button>
+      ) : null}
+    </React.Fragment>
+  );
+}
+
+function getEmptyHolder(rentalSpots) {
+  let rentalSpot = null;
+  let index = -1;
+  const maxIndex = rentalSpots.length - 1;
+  const iterCount = 50;
+  for (let i = 0; !(index >= 0) && i < iterCount; ++i) {
+    rentalSpot = rentalSpots[i];
+    index = rentalSpot.bikes.findIndex(bike => !bike);
+    console.log(!(index >= 0));
+  }
+
+  return { rentalSpot, index };
+}
+
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  rentalSpots: state.rentalSpots
 });
 
-export default connect(mapStateToProps)(MyPage);
+const mapDispatchToProps = dispatch => ({
+  onReturn: (rentalSpot, index, bike) =>
+    dispatch(reqReturn(rentalSpot, index, bike))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyPage);

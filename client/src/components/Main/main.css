@@ -105,6 +105,7 @@
   border-radius: 5em;
   height:100%;
   border: 10px solid slategray;
+  text-align: center;
 }
 
 .bottom-nav__btn i{

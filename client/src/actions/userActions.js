@@ -20,11 +20,12 @@ export function rentFail(error) {
 export function rentSuccess(user, rentalSpot) {
   return {
     type: ACTION.RENT_SUCCESS,
-    payload: { user, rentalSpot,  }
+    payload: { user, rentalSpot }
   };
 }
 
 export function reqReturn(rentalSpot, index, bike) {
+  console.log('bike:', bike);
   return {
     type: ACTION.REQ_RETURN,
     payload: {
@@ -42,19 +43,23 @@ export function returnFail(error) {
   };
 }
 
-export function returnSuccess() {
+export function returnSuccess(user, rentalSpot) {
   return {
-    type: ACTION.RETURN_SUCCESS
+    type: ACTION.RETURN_SUCCESS,
+    payload: {
+      user,
+      rentalSpot
+    }
   };
 }
 
-export function clearError(){
+export function clearError() {
   return {
     type: ACTION.CLEAR_ERROR
-  }
+  };
 }
 
-export function reqGetUser(id) {
+export function reqGetUser() {
   return {
     type: ACTION.REQ_GET_USER
   };

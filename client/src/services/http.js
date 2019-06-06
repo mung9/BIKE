@@ -31,7 +31,7 @@ function config() {
 }
 
 export default {
-  get: endPoint => axios.get(endPoint, config()),
+  get: (endPoint, data) => axios.get(endPoint, config()),
   post: (endPoint, data) => axios.post(endPoint, data, config()),
   put: (endPoint, data) => axios.put(endPoint, data, config()),
   delete: (endPoint, data) => axios.delete(endPoint, data, config())

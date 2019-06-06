@@ -33,6 +33,7 @@ function BikeList(props) {
   console.log('useruser:',props.user)
 
   const renderRows = bikes => {
+    console.log('bikes:', bikes);
     return bikes
       .map((bike, index) =>
         bike ? (
@@ -45,7 +46,7 @@ function BikeList(props) {
                 ? () => alert("이미 대여중인 자전거가 있습니다!")
                 : () => handleRent(rentalSpot, index)
             }
-            authorized={getAuth()}
+            authorized={Boolean(getAuth())}
             key={bike._id}
           />
         ) : null
