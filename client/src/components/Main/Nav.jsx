@@ -17,7 +17,7 @@ export default function Nav() {
       </Link>
       <Link to="/mypage" >
       <button className="bottom-nav__btn-center">
-        My
+        <span>My</span>
       </button>
       </Link>
       <Link to="/buy-ticket">

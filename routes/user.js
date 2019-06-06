@@ -60,6 +60,7 @@ router.post("/rent/:id/:index", [auth], async (req, res) => {
   if (!bike) return res.status(400).send("There is no bike to rent");
 
   req.user.bike = bike;
+  req.user.rentStart = Date.now();
   const user = await User.findByIdAndUpdate(req.user._id, req.user, {
     new: true
   }).select("-password");
@@ -96,7 +97,7 @@ router.post("/return/:id/:index", [auth], async (req, res) => {
 
   user = await User.findByIdAndUpdate(
     req.user._id,
-    { bike: null },
+    { bike: null, rentalStart: null },
     {
       new: true
     }

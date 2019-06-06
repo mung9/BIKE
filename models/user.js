@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Bike",
     default: null
+  },
+  rentStart: {
+    type: Date,
+    default: null
   }
 });
 
@@ -56,7 +60,8 @@ const schema = {
     .max(255),
   regDate: Joi.date().default(new Date()),
   isAdmin: Joi.bool().default(false),
-  bike: Joi.objectId().default(null)
+  bike: Joi.objectId().default(null),
+  rentStart: Joi.date().default(null)
 };
 function validate(user) {
   return Joi.validate(user, schema);

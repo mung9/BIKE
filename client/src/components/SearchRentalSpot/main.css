@@ -2,16 +2,9 @@ li {
   list-style: none;
 }
 
-.search-rental-spot {
-}
-
 .search-rental-spot__dashboard {
   text-align: center;
   display: flex;
-}
-
-.search-rental-spot__dashboard .rental-spots-result,
-.search-rental-spot__dashboard .rental-spot-spec-result {
 }
 
 .search-rental-spot__dashboard .rental-spots-result {
@@ -34,6 +27,10 @@ li {
 }
 
 .rental-spots-result .rental-spot {
-  transition: background-color .3s;
-  /* color: #eee; */
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+.rental-spots-result .rental-spot:hover:not(.list-group-item-info){
+  background-color: #eee;
 }

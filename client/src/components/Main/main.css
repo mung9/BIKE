@@ -78,11 +78,12 @@
   font-weight: bold;
   font-size: 1.4em;
   align-self: flex-end;
-  height: 13%;
+  height: 4em;
   background-color: mediumaquamarine;
   display: flex;
   padding: 0 10em;
   justify-content: space-evenly;
+
 }
 
 .bottom-nav a{
@@ -102,10 +103,20 @@
 }
 
 .bottom-nav__btn-center {
-  border-radius: 5em;
-  height:100%;
+  border-radius: 4em;
+  height:4em;
+  width: 4em;
   border: 10px solid slategray;
   text-align: center;
+  transition: .5s transform;
+}
+
+.bottom-nav__btn-center:hover{
+  transform: rotate(25deg);
+}
+
+.bottom-nav__btn-center span {
+  margin:auto;
 }
 
 .bottom-nav__btn i{

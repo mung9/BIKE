@@ -88,12 +88,31 @@ function MyPage(props) {
   );
 }
 
+function fillZero(n){
+  return n<10?'0'+n:n;
+}
+
+function format(date){
+  if(!date.getFullYear) return null;
+  const yyyy = date.getFullYear();
+  const MM = fillZero(date.getMonth()+1);
+  const dd = fillZero(date.getDate());
+
+  const hh = fillZero(date.getHours());
+  const mm = fillZero(date.getMonth());
+  const ss = fillZero(date.getSeconds());
+
+  return `${yyyy}.${MM}.${dd} ${hh}:${mm}:${ss}`;
+}
+
 function BikeRentalStatus({ user, onClickReturn }) {
   const bike = user ? user.bike : null;
+  const rentStart = new  Date(user.rentStart);
+  const timeStamp = format(rentStart);
   return (
     <React.Fragment>
       <span id="status">ⓘ {bike ? "자전거 대여 중" : "자전거 대여 전"}</span>
-      <span id="rent_time">{bike ? "(2019.06.07 15:32:50)" : ""}</span>
+      <span id="rent_time">{bike ? ` (${timeStamp})` : ""}</span>
       {bike ? (
         <button className="btn btn-primary" id="return" onClick={onClickReturn}>
           반납
