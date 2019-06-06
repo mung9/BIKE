@@ -1,9 +1,9 @@
 {
-  "name": "todo",
+  "name": "BIKE",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://todo-2019-summer-coding.herokuapp.com",
+  "homepage": "https://b1ke.herokuapp.com",
   "scripts": {
     "install-client": "npm i --prefix client",
     "client-watch": "npm run start-watch --prefix client",
@@ -16,7 +16,7 @@
     "node": "11.14.0"
   },
   "keywords": [
-    "todo"
+    "bike"
   ],
   "author": "mung9",
   "license": "ISC",
