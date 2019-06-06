@@ -110,9 +110,9 @@ function RentalSpotsResult({ rentalSpots, onClick, selectedRentalSpot }) {
             onClick={() => onClick(rentalSpot)}
             key={rentalSpot._id}
           >
-            <span>{`[${rentalSpot.num}] ${rentalSpot.name} (${
+            {`[${rentalSpot.num}] ${rentalSpot.name} (${
               rentalSpot.bikes.filter(bike => bike).length
-            }대 가능)`}</span>
+            }대 가능)`}
           </li>
         );
       })}

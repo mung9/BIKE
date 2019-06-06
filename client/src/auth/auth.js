@@ -16,7 +16,7 @@ export function sayUserName() {
   );
 }
 
-export function getUserName() {
+export function   getUserName() {
   const email = getAuth().username;
   const atIndex = email.indexOf("@");
   return email.slice(0, atIndex);
