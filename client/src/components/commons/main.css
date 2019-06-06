@@ -1,0 +1,36 @@
+.bike-header {
+  background-color: mediumaquamarine;
+}
+
+.bike-header .logo h1 {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.3em;
+}
+
+.bike-header .user-nav {
+  display: flex;
+}
+
+.bike-header .btn-logout {
+  width:fit-content;
+  padding-top: .2em;
+  font-size: 1.2em;
+  color: white;
+  font-weight: bold;
+}
+
+.bike-header .btn-logout * {
+  margin-right: 0.3em;
+}
+
+.bike-header .say-user {
+  color: white;
+  font-size: 1.4em;
+  margin-right: .4em;
+}
+
+.bike-header .say-user * {
+  margin-right: 0.3em;
+}
+

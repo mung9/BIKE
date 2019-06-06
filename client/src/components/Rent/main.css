@@ -1,0 +1,27 @@
+.rent {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* transition: all 1s; */
+  animation: fadein;
+}
+
+@keyframes fadein {
+  from{
+    opacity: .0
+  }
+  to{
+    opacity: 1.0;
+  }
+}
+
+.rent .bike-list {
+  width: 40em;
+  margin:auto;
+}
+
+.rent .bike-list td,
+.rent .bike-list th{
+  font-size: 1em;
+  line-height: 1.5em;
+}

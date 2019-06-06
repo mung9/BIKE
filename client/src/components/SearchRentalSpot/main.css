@@ -1,0 +1,39 @@
+li {
+  list-style: none;
+}
+
+.search-rental-spot {
+}
+
+.search-rental-spot__dashboard {
+  text-align: center;
+  display: flex;
+}
+
+.search-rental-spot__dashboard .rental-spots-result,
+.search-rental-spot__dashboard .rental-spot-spec-result {
+}
+
+.search-rental-spot__dashboard .rental-spots-result {
+  min-height: 70vh;
+  text-align: center;
+  flex: 3;
+}
+
+.search-rental-spot__dashboard .rental-spots-result.no-result {
+  background-color: white;
+}
+
+.search-rental-spot__dashboard .rental-spots-result.no-result .notify{
+  margin-top: 10%;
+  font-size: 2em;
+}
+
+.search-rental-spot__dashboard .rental-spot-spec-result {
+  flex: 7;
+}
+
+.rental-spots-result .rental-spot {
+  transition: background-color .3s;
+  /* color: #eee; */
+}
