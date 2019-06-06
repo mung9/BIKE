@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Route path="/" component={Header} />
         <div className="content">
           <Switch>
@@ -47,7 +47,7 @@ class App extends Component {
           </Switch>
         </div>
         {/* <Footer /> */}
-      </div>
+      </React.Fragment>
     );
   }
 }

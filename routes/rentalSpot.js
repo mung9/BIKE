@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     options: {
       retainNullValues: true
     }
-  });
+  }).sort('num');
 
   return res.send(rentalSpots);
 });

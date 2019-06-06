@@ -31,14 +31,14 @@ class Entrance extends React.Component {
                 </span>
               </Link>
             </button>
-            <Link className="link-main" to="/main">
-              <button className="btn-container__btn">
+            <button className="btn-container__btn">
+              <Link className="link-main" to="/main">
                 <span className="btn-label">비회원</span>
                 <span className="btn-icon">
                   <FontAwesomeIcon icon={faUserAlt} size="2x" />
                 </span>
-              </button>
-            </Link>
+              </Link>
+            </button>
           </div>
         </div>
         <Nav />

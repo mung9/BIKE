@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAuth, getUserName } from "../../auth/auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOutAlt, faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt, faUserCircle, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header(props) {
   const logout = () => {
