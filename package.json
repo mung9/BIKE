@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://b1ke.herokuapp.com",
   "scripts": {
     "install-client": "npm i --prefix client",
     "client-watch": "npm run start-watch --prefix client",
@@ -36,9 +35,5 @@
     "mongoose": "^5.5.9",
     "popper.js": "^1.15.0"
   },
-  "devDependencies": {
-    "node-sass": "^4.12.0",
-    "sass-loader": "^7.1.0",
-    "webpack": "^4.32.2"
-  }
+  "devDependencies": {}
 }

@@ -5,8 +5,6 @@ import * as rentActions from "../actions/userActions";
 import * as ACTION from "../actions/userActionTypes";
 import * as errorActions from "../actions/errorActions";
 
-import { getAuth } from "../auth/auth";
-
 function* handleRent(action) {
   try {
     const { payload } = action;
@@ -43,7 +41,7 @@ function* handleReturn(action) {
   }
 }
 
-function* handleGetUser(action) {
+function* handleGetUser() {
   try {
     const { data: user } = yield call(rentService.getUser);
     yield put(rentActions.getUserSuccess(user));

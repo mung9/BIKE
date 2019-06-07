@@ -5,18 +5,6 @@ import * as authActions from '../actions/authActions';
 import * as ACTION from '../actions/authActionTypes';
 import * as errorActions from '../actions/errorActions';
 
-// const getOriginalTodos = state => state.todos;
-
-// function* handleGetRentalSpots() {
-//   try {
-//     const { data: rentalSpots } = yield call(rentalSpotService.getRentalSpots);
-//     console.log(rentalSpots);
-//     yield put(rentalSpotsActions.reqGetRentalSpot());
-//   } catch (error) {
-//     yield put(errorActions.setError(error));
-//   }
-// }
-
 function* handlePostAuth(action) {
   try {
     const {data: user} = yield call(authService.postAuth, action.payload);
